@@ -1,7 +1,7 @@
 <div align="center">
   <a name="readme-top"></a>
   <img
-    src="https://raw.githubusercontent.com/firecrawl/firecrawl-mcp-server/main/img/fire.png"
+    src="./img/fire.png"
     height="140"
   >
 </div>
