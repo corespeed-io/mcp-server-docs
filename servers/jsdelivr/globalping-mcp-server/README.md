@@ -6,18 +6,16 @@
 {
   "mcpServers": {
     "@jsdelivr/globalping-mcp-server": {
-      "url": "https://mcp.globalping.dev/sse"
+      "url": "https://mcp.globalping.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer <GLOBALPING_TOKEN>"
+      }
     }
   }
 }
 ```
 
-### One-Click Installation
-
-|   IDE   |                                                                                                                                                   Install                                                                                                                                                   |
-| :-----: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Cursor  |                                                [![Install MCP Server](https://cursor.com/deeplink/mcp-install-light.svg)](https://cursor.com/en/install-mcp?name=globalping&config=eyJ1cmwiOiJodHRwczovL21jcC5nbG9iYWxwaW5nLmRldi9zc2UifQ==)                                                 |
-| VS Code | [![Install on VS Code](https://img.shields.io/badge/Install_on-VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=globalping&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.globalping.dev%2Fsse%22%7D) |
+> **Note:** Replace `<GLOBALPING_TOKEN>` with your Globalping API token for higher rate limits. Get one from [globalping.io](https://globalping.io). The server also supports OAuth authentication.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/jsdelivr/globalping-media/refs/heads/master/logo/full_colored_dark.svg" alt="Globalping Logo" width="180"/>
@@ -58,35 +56,6 @@ The remote MCP server is available at:
 - Streamable HTTP transport: `https://mcp.globalping.dev/mcp`
 - SSE transport: `https://mcp.globalping.dev/sse`
 
-### Gemini CLI
-
-```bash
-gemini extensions install https://github.com/jsdelivr/globalping-mcp-server
-```
-
-Or with API token:
-```bash
-gemini mcp add globalping https://mcp.globalping.dev/mcp --header "Authorization: Bearer YOUR_TOKEN"
-```
-
-### Claude Desktop App
-
-Add to configuration file (`%APPDATA%\Claude\config.json` on Windows or `~/Library/Application Support/Claude/config.json` on macOS):
-
-```json
-{
-    "mcpServers": {
-        "globalping": {
-            "command": "npx",
-            "args": [
-                "mcp-remote",
-                "https://mcp.globalping.dev/sse"
-            ]
-        }
-    }
-}
-```
-
 ### Anthropic Claude API
 
 1. Go to [console.anthropic.com](https://console.anthropic.com/)
@@ -111,21 +80,6 @@ Streamable HTTP:
     "mcpServers": {
         "globalping": {
             "url": "https://mcp.globalping.dev/mcp"
-        }
-    }
-}
-```
-
-Legacy SSE:
-```json
-{
-    "mcpServers": {
-        "globalping": {
-            "command": "npx",
-            "args": [
-                "mcp-remote",
-                "https://mcp.globalping.dev/sse"
-            ]
         }
     }
 }
@@ -162,23 +116,6 @@ Streamable HTTP:
             "headers": {
                 "Authorization": "Bearer YOUR_GLOBALPING_API_TOKEN"
             }
-        }
-    }
-}
-```
-
-Legacy SSE:
-```json
-{
-    "mcpServers": {
-        "globalping": {
-            "command": "npx",
-            "args": [
-                "mcp-remote",
-                "https://mcp.globalping.dev/sse",
-                "--header",
-                "Authorization: Bearer YOUR_GLOBALPING_API_TOKEN"
-            ]
         }
     }
 }
@@ -243,30 +180,3 @@ Locations can be specified using the "magic" field, supporting various formats:
 
 Combine with plus signs for specific targeting: "London+UK", "Cloudflare+US", etc.
 
-## Development
-
-The codebase is organized into modules:
-
-- `src/index.ts` - Main entry point and MCP agent definition
-- `src/app.ts` - OAuth web routes
-- `src/api` - Globalping API client
-- `src/auth` - Authentication utilities
-- `src/config` - Configuration and constants
-- `src/lib` - Utility functions
-- `src/mcp` - MCP tool handlers
-- `src/types` - TypeScript type definitions
-- `src/ui` - HTML templates
-
-### Add Globalping credentials
-
-```bash
-npx wrangler secret put GLOBALPING_CLIENT_ID
-```
-
-### KV storage
-
-Used for `OAuthProvider` docs: https://github.com/cloudflare/workers-oauth-provider
-
-- Create a KV namespace and copy ID
-- Binding for it must be `OAUTH_KV`
-- Configure `kv_namespaces` in the `wrangler.jsonc` file

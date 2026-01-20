@@ -12,13 +12,6 @@
 }
 ```
 
-### One-Click Installation
-
-|   IDE   |                                                                                                                                                   Install                                                                                                                                                   |
-| :-----: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Cursor  |                                                [![Install MCP Server](https://cursor.com/deeplink/mcp-install-light.svg)](https://cursor.com/en/install-mcp?name=linear&config=eyJ1cmwiOiJodHRwczovL21jcC5saW5lYXIuYXBwL3NzZSJ9)                                                 |
-| VS Code | [![Install on VS Code](https://img.shields.io/badge/Install_on-VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=linear&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.linear.app%2Fsse%22%7D) |
-
 A Model Context Protocol (MCP) server that provides a standardized interface for AI models and agents to securely access and interact with Linear data.
 
 ## Overview

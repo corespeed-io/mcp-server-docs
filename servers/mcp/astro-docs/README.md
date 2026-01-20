@@ -76,23 +76,6 @@ vscode:mcp/install?%7B%22name%22%3A%22Astro%20docs%22%2C%22url%22%3A%22https%3A%
 
 [More info on MCP in VS Code](https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_add-an-mcp-server)
 
-### Windsurf
-
-As of July 2025, Windsurf doesn't support streamable HTTP MCP servers, so you need to use a local proxy. Use the following configuration:
-
-```json
-{
-  "mcpServers": {
-    "Astro docs": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://gateway.mcp.corespeed.io/mcp-gateway/astro-docs"]
-    }
-  }
-}
-```
-
-[More info on MCP in Windsurf](https://docs.windsurf.com/windsurf/cascade/mcp#mcp-config-json)
-
 ### ChatGPT
 
 As of July 2025, ChatGPT only supports MCP servers (which it calls Custom Connectors) for Pro, Team and Enterprise users. The steps to add a cutom connector are complicated. See [the OpenAI documentation](https://platform.openai.com/docs/mcp#test-and-connect-your-mcp-server) for details.

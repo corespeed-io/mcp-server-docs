@@ -49,23 +49,6 @@ The servers support both `streamable-http` transport via `/mcp` and `sse` transp
 
 If your MCP client supports remote servers natively, specify the server URL directly in its interface (e.g., Cloudflare AI Playground).
 
-For clients without native remote support, configure using [mcp-remote](https://www.npmjs.com/package/mcp-remote):
-
-```json
-{
-	"mcpServers": {
-		"cloudflare-observability": {
-			"command": "npx",
-			"args": ["mcp-remote", "https://observability.mcp.cloudflare.com/mcp"]
-		},
-		"cloudflare-bindings": {
-			"command": "npx",
-			"args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/mcp"]
-		}
-	}
-}
-```
-
 ## Using Cloudflare's MCP Servers from the OpenAI Responses API
 
 To use these servers with OpenAI's responses API, you will need to provide an API token with required scopes. Create a token in your Cloudflare dashboard with appropriate permissions for your desired server.

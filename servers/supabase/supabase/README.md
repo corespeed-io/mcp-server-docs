@@ -6,18 +6,16 @@
 {
   "mcpServers": {
     "@supabase/supabase": {
-      "url": "https://mcp.supabase.com/mcp"
+      "url": "https://mcp.supabase.com/mcp",
+      "headers": {
+        "Authorization": "Bearer <SUPABASE_ACCESS_TOKEN>"
+      }
     }
   }
 }
 ```
 
-### One-Click Installation
-
-|   IDE   |                                                                                                                                                   Install                                                                                                                                                   |
-| :-----: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Cursor  |                                                [![Install MCP Server](https://cursor.com/deeplink/mcp-install-light.svg)](https://cursor.com/en/install-mcp?name=supabase&config=eyJ1cmwiOiJodHRwczovL21jcC5zdXBhYmFzZS5jb20vbWNwIn0=)                                                 |
-| VS Code | [![Install on VS Code](https://img.shields.io/badge/Install_on-VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=supabase&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.supabase.com%2Fmcp%22%7D) |
+> **Note:** Replace `<SUPABASE_ACCESS_TOKEN>` with your Supabase personal access token. Generate one at `/dashboard/account/tokens` in your Supabase dashboard. For interactive use, you can omit the headers to use OAuth authentication instead.
 
 Connect Supabase to your AI assistants through the Model Context Protocol (MCP) standard.
 

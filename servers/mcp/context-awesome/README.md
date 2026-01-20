@@ -99,43 +99,6 @@ Go to **Settings** → **Connectors** → **Add Custom Connector**:
 * "Get React component libraries from awesome lists"
 * "Find database ORMs in Go awesome lists"
 
----
-
-## 🏗 Local Installation (Development)
-
-If you prefer to run the server locally:
-
-1. **Clone and Build:**
-```bash
-git clone [https://github.com/bh-rat/context-awesome.git](https://github.com/bh-rat/context-awesome.git)
-cd context-awesome
-npm install
-npm run build
-
-```
-
-
-2. **Configure Client:**
-Add this to your MCP configuration file:
-```json
-{
-  "mcpServers": {
-    "context-awesome": {
-      "command": "node",
-      "args": ["/path/to/context-awesome/build/index.js"],
-      "env": {
-        "CONTEXT_AWESOME_API_HOST": "[https://api.context-awesome.com](https://api.context-awesome.com)"
-      }
-    }
-  }
-}
-
-```
-
-
-
----
-
 ## ✨ Features
 
 * **Vast Coverage:** Search across 8,500+ curated awesome lists.

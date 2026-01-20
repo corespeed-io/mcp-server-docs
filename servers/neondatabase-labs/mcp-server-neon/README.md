@@ -12,13 +12,6 @@
 }
 ```
 
-### One-Click Installation
-
-|   IDE   |                                                                                                                                                   Install                                                                                                                                                   |
-| :-----: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Cursor  |                                                [![Install MCP Server](https://cursor.com/deeplink/mcp-install-light.svg)](https://cursor.com/en/install-mcp?name=neon&config=eyJ1cmwiOiJodHRwczovL21jcC5uZW9uLnRlY2gvc3NlIn0=)                                                 |
-| VS Code | [![Install on VS Code](https://img.shields.io/badge/Install_on-VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=neon&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.neon.tech%2Fsse%22%7D) |
-
 The **Neon MCP Server** is an open-source tool enabling natural language interaction with Neon Postgres databases. It implements the Model Context Protocol (MCP), a standardized protocol bridging LLMs and external systems.
 
 ## Key Features
@@ -63,19 +56,6 @@ npx neonctl@latest init
 }
 ```
 
-### Option 2: Local MCP Server
-
-```json
-{
-  "mcpServers": {
-    "neon": {
-      "command": "npx",
-      "args": ["-y", "@neondatabase/mcp-server-neon", "start", "<YOUR_NEON_API_KEY>"]
-    }
-  }
-}
-```
-
 ## Read-Only Mode
 
 Enable restricted access by unchecking "Full access" during OAuth or adding:
@@ -114,37 +94,6 @@ Enable restricted access by unchecking "Full access" during OAuth or adding:
 
 ### Other
 - `provision_neon_auth` / `search` / `fetch` / `load_resource`
-
-## Troubleshooting
-
-**Windows Command Prompt:**
-```json
-{
-  "command": "cmd",
-  "args": ["/c", "npx", "-y", "@neondatabase/mcp-server-neon", "start", "<KEY>"]
-}
-```
-
-**Windows WSL:**
-```json
-{
-  "command": "wsl",
-  "args": ["npx", "-y", "@neondatabase/mcp-server-neon", "start", "<KEY>"]
-}
-```
-
-## Development
-
-Built with Bun. Uses Next.js for the remote server and publishes to npm as `@neondatabase/mcp-server-neon`.
-
-**Local Commands:**
-```bash
-cd landing && bun install
-bun run dev
-bun run build:cli
-bun run start:cli $NEON_API_KEY
-bun run lint && bun run typecheck
-```
 
 ## Resources
 

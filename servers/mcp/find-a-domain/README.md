@@ -114,25 +114,6 @@ For Claude Desktop with HTTP/Streamable HTTP support, add to your configuration 
 }
 ```
 
-### Using mcp-remote (for clients without native HTTP support)
-
-For MCP clients that don't natively support remote servers, you can use the `mcp-remote` package:
-
-```json
-{
-  "mcpServers": {
-    "find-a-domain": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://gateway.mcp.corespeed.io/mcp-gateway/find-a-domain"
-      ]
-    }
-  }
-}
-```
-
 ## Use Cases
 
 ### For Entrepreneurs & Startups

@@ -6,18 +6,16 @@
 {
   "mcpServers": {
     "@github/github-mcp-server": {
-      "url": "https://api.githubcopilot.com/mcp/"
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer <GITHUB_PERSONAL_ACCESS_TOKEN>"
+      }
     }
   }
 }
 ```
 
-### One-Click Installation
-
-|   IDE   |                                                                                                                                                   Install                                                                                                                                                   |
-| :-----: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Cursor  |                                                [![Install MCP Server](https://cursor.com/deeplink/mcp-install-light.svg)](https://cursor.com/en/install-mcp?name=github&config=eyJ1cmwiOiJodHRwczovL2FwaS5naXRodWJjb3BpbG90LmNvbS9tY3AvIn0=)                                                 |
-| VS Code | [![Install on VS Code](https://img.shields.io/badge/Install_on-VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=github&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fapi.githubcopilot.com%2Fmcp%2F%22%7D) |
+> **Note:** Replace `<GITHUB_PERSONAL_ACCESS_TOKEN>` with your GitHub PAT. Get one from [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens). Alternatively, omit the headers to use OAuth authentication instead.
 
 GitHub's official Model Context Protocol (MCP) Server that connects AI tools directly to GitHub's platform. This enables AI agents, assistants, and chatbots to read repositories and code files, manage issues and PRs, analyze code, and automate workflows through natural language interactions.
 
@@ -47,32 +45,6 @@ The easiest way to use the GitHub MCP Server. Hosted by GitHub at `https://api.g
 **Authentication:**
 - OAuth (recommended)
 - GitHub Personal Access Tokens (PATs)
-
-### NPX Deployment
-
-```json
-{
-  "mcpServers": {
-    "github": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>"
-      }
-    }
-  }
-}
-```
-
-### Building from Source
-
-Requires Go to be installed:
-
-```bash
-git clone https://github.com/github/github-mcp-server.git
-cd github-mcp-server
-go build
-```
 
 ## Configuration
 
@@ -216,9 +188,6 @@ Run the server in read-only mode using the `--read-only` flag. This only offers 
 
 ### Enterprise Cloud (ghe.com)
 Use the remote server pointing to your custom domain.
-
-### Enterprise Server
-Requires local deployment with `GITHUB_HOST` environment variable set to your Enterprise Server URL.
 
 ## Security Best Practices
 

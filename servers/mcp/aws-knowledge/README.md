@@ -96,21 +96,6 @@ https://gateway.mcp.corespeed.io/mcp-gateway/aws-knowledge
 }
 ```
 
-If the client you are using does not support HTTP transport for MCP or if it encounters issues during setup, you can use the [fastmcp](https://github.com/jlowin/fastmcp) utility to proxy from stdio to HTTP transport. Below is a configuration example for the fastmcp utility.
-
-**fastmcp**
-
-```json
-{
-  "mcpServers": {
-    "aws-knowledge-mcp-server": {
-      "command": "uvx",
-      "args": ["fastmcp", "run", "https://gateway.mcp.corespeed.io/mcp-gateway/aws-knowledge"]
-    }
-  }
-}
-```
-
 ### MCP Registries
 
 The AWS Knowledge MCP Server is available in the following official MCP registries:

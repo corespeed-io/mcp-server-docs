@@ -33,7 +33,6 @@ This remote MCP server acts as middleware to the Sentry API, optimized for codin
 
 ### Key Features
 
-- Remote hosted (preferred) or local STDIO mode
 - OAuth support for authentication using your existing Sentry organization
 - Streamable HTTP with graceful SSE fallback
 - 16+ tool calls and prompts for comprehensive Sentry context
@@ -65,122 +64,12 @@ codex mcp add sentry -- npx -y mcp-remote@latest https://mcp.sentry.dev/mcp
 
 Available via Cursor → Settings → Cursor Settings → MCP following the prompts to configure Sentry MCP. Cursor 1.0+ includes enhanced MCP support with OAuth and Streamable HTTP.
 
-### Stdio vs Remote
-
-The repository supports a stdio transport for easier adaptation to self-hosted Sentry installations.
-
-**Important Note:** The AI-powered search tools (`search_events` and `search_issues`) require an OpenAI API key. These tools translate natural language queries into Sentry's query syntax. All other tools function normally without it.
-
-To use stdio transport, create a Sentry User Auth Token with these scopes:
-- `org:read`
-- `project:read`
-- `project:write`
-- `team:read`
-- `team:write`
-- `event:write`
-
-Launch with:
-```bash
-npx @sentry/mcp-server@latest --access-token=sentry-user-token
-```
-
-For self-hosted deployments, add `--host=sentry.example.com`.
-
-**Environment variables:**
-```
-SENTRY_ACCESS_TOKEN=
-SENTRY_HOST=              # Optional, for self-hosted
-OPENAI_API_KEY=           # Required for AI search tools
-```
-
-### MCP Inspector
-
-Test the service using the included MCP Inspector:
-```bash
-pnpm inspector
-```
-
-Connect to `http://localhost:5173` and authenticate. On localhost, use `http://localhost:6274` if OAuth flow issues occur.
-
-## Local Development
-
-### Setup Steps
-
-1. **Create environment files:**
-   ```bash
-   make setup-env
-   ```
-
-2. **Create OAuth App in Sentry** (Settings → API → Applications):
-   - Homepage URL: `http://localhost:5173`
-   - Authorized Redirect URIs: `http://localhost:5173/oauth/callback`
-   - Note Client ID and generate Client Secret
-
-3. **Configure credentials:**
-   - Add `OPENAI_API_KEY` to root `.env`
-   - Add to `packages/mcp-cloudflare/.env`:
-     - `SENTRY_CLIENT_ID=your_development_client_id`
-     - `SENTRY_CLIENT_SECRET=your_development_client_secret`
-     - `COOKIE_SECRET=my-super-secret-cookie`
-
-4. **Start development server:**
-   ```bash
-   pnpm dev
-   ```
-
-### Verify
-
-Run the server locally at `http://localhost:5173`, then enter `http://localhost:5173/mcp` in Inspector and connect. After authentication, you can list available tools.
-
-### Tests
-
-**Unit tests:**
-```bash
-pnpm test
-```
-
-**Evaluations** (requires `.env` in project root with `OPENAI_API_KEY`):
-```bash
-pnpm eval
-```
-
-**Manual testing:**
-```bash
-# Test with local dev server
-pnpm -w run cli "who am I?"
-
-# Test agent mode
-pnpm -w run cli --agent "who am I?"
-
-# Test against production
-pnpm -w run cli --mcp-host=https://mcp.sentry.dev "query"
-
-# Test stdio mode
-pnpm -w run cli --access-token=TOKEN "query"
-```
-
-The CLI defaults to `http://localhost:5173`. Override with `--mcp-host` or set `MCP_URL` environment variable.
-
-**Comprehensive testing playbooks:**
-- **Stdio testing:** See `docs/testing-stdio.md` for IDEs, MCP Inspector
-- **Remote testing:** See `docs/testing-remote.md` for OAuth, web UI, CLI client
-
 ## Seer Integration
 
 The Sentry MCP Server provides seamless integration with Seer, Sentry's AI agent:
 - Trigger Seer Analysis for automated root cause analysis
 - Get AI-generated fix recommendations
 - Monitor fix status
-
-## Development Notes
-
-### Automated Code Review
-
-This repository uses automated code review tools to identify potential issues. These should be treated as helpful suggestions for discussion, not blocking requirements for merging PRs. Human code review remains essential.
-
-### Contributor Documentation
-
-See `CLAUDE.md` (also `AGENTS.md`) for contributor workflows and complete documentation index. The `docs/` folder contains per-topic guides and tool-integrated markdown files.
 
 ## Related Resources
 

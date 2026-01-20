@@ -72,83 +72,6 @@ The easiest way to connect is via Notion's hosted MCP server.
 
 URL: `https://mcp.notion.com/sse`
 
-**STDIO (Local Server using mcp-remote)**
-
-```json
-{
-  "mcpServers": {
-    "notionMCP": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://mcp.notion.com/mcp"]
-    }
-  }
-}
-```
-
-### Option 2: Self-Hosted (Open Source)
-
-For teams requiring full control over their infrastructure, the open-source implementation is available.
-
-#### Step 1: Create Notion Integration
-
-1. Go to [notion.so/profile/integrations](https://www.notion.so/profile/integrations)
-2. Create a new internal integration
-3. Copy the API token (starts with `ntn_`)
-4. Optionally configure read-only capabilities
-
-#### Step 2: Connect Content
-
-Grant the integration access to relevant pages and databases through:
-- The integration's Access tab, or
-- Individual page connections menu
-
-#### Step 3: Configure MCP Client
-
-**npm (Recommended)**
-
-```json
-{
-  "mcpServers": {
-    "notionApi": {
-      "command": "npx",
-      "args": ["-y", "@notionhq/notion-mcp-server"],
-      "env": {
-        "NOTION_TOKEN": "ntn_****"
-      }
-    }
-  }
-}
-```
-
-**Docker**
-
-```json
-{
-  "mcpServers": {
-    "notionApi": {
-      "command": "docker",
-      "args": ["run", "--rm", "-i", "-e", "NOTION_TOKEN", "mcp/notion"],
-      "env": {
-        "NOTION_TOKEN": "ntn_****"
-      }
-    }
-  }
-}
-```
-
-## Transport Options
-
-### STDIO (Default)
-
-Standard input/output communication for most MCP clients.
-
-### Streamable HTTP
-
-Web-based alternative running on configurable ports with bearer token authentication. Supports three authentication methods:
-- Auto-generated tokens (development)
-- Command-line specified tokens
-- Environment variables
-
 ## Breaking Changes in v2.0.0
 
 Version 2.0.0 migrates to Notion API 2025-09-03, introducing data sources as the primary abstraction for databases.
@@ -178,21 +101,6 @@ Once connected, you can instruct the AI to interact with Notion naturally:
 - "Add a page titled 'Notion MCP' to page 'Development'"
 - "Find all tasks assigned to me in the Project Tracker database"
 - Reference content directly by page ID
-
-## Development
-
-For the self-hosted version:
-
-```bash
-# Build and test
-npm run build && npm test
-
-# Run in development mode
-npm run dev
-
-# Publish
-npm run publish
-```
 
 ## Resources
 

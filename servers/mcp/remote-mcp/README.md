@@ -68,48 +68,6 @@ The system uses a decoupled architecture:
 
 This contrasts with traditional setups where clients connect directly to multiple local MCP servers.
 
-### Installation & Setup
-
-#### Quick Start (Published Package)
-
-```json
-{
-  "mcpServers": {
-    "remote-mcp": {
-      "command": "npx",
-      "args": ["-y", "@remote-mcp/client"],
-      "env": {
-        "REMOTE_MCP_URL": "http://localhost:9512",
-        "HTTP_HEADER_Authorization": "Bearer <token>"
-      }
-    }
-  }
-}
-```
-
-#### Custom Client Implementation
-
-Install dependencies:
-```bash
-npm install @remote-mcp/client @trpc/client@next zod
-```
-
-Basic initialization establishes connection to remote server with error handling callbacks.
-
-### Server Implementation
-
-Create remote servers using `@remote-mcp/server` with:
-- Type-safe tool definitions via Zod schemas
-- HTTP endpoints via tRPC adapters
-- Support for multiple hosting platforms (Node.js, Cloudflare Workers)
-
-### Environment Variables
-
-| Variable | Description |
-|----------|-------------|
-| `REMOTE_MCP_URL` | Connection endpoint URL |
-| `HTTP_HEADER_Authorization` | Authentication token (Bearer format) |
-
 ### Core Capabilities
 
 **Currently Implemented:**
