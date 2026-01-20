@@ -8,6 +8,25 @@
 
 # Firecrawl MCP Server
 
+## Server Config
+
+```json
+{
+  "mcpServers": {
+    "firecrawl-mcp-server": {
+      "url": "https://gateway.mcp.corespeed.io/mcp-gateway/firecrawl-mcp-server"
+    }
+  }
+}
+```
+
+### One-Click Installation
+
+|   IDE   |                                                                                                                                                   Install                                                                                                                                                   |
+| :-----: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Cursor  |                                                [![Install MCP Server](https://cursor.com/deeplink/mcp-install-light.svg)](https://cursor.com/en/install-mcp?name=firecrawl-mcp-server&config=eyJ1cmwiOiJodHRwczovL2dhdGV3YXkubWNwLmNvcmVzcGVlZC5pby9tY3AtZ2F0ZXdheS9maXJlY3Jhd2wtbWNwLXNlcnZlciJ9)                                                 |
+| VS Code | [![Install on VS Code](https://img.shields.io/badge/Install_on-VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=firecrawl-mcp-server&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fgateway.mcp.corespeed.io%2Fmcp-gateway%2Ffirecrawl-mcp-server%22%7D) |
+
 A Model Context Protocol (MCP) server implementation that integrates with [Firecrawl](https://github.com/firecrawl/firecrawl) for web scraping capabilities.
 
 > Big thanks to [@vrknetha](https://github.com/vrknetha), [@knacklabs](https://www.knacklabs.ai) for the initial implementation!
