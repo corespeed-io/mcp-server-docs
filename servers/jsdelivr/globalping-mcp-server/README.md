@@ -6,7 +6,7 @@
 {
   "mcpServers": {
     "@jsdelivr/globalping-mcp-server": {
-      "url": "https://mcp.globalping.dev/mcp",
+      "url": "https://mcp.globalping.dev/sse",
       "headers": {
         "Authorization": "Bearer <GLOBALPING_TOKEN>"
       }
